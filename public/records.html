@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NileTech - HR records (Confidential)</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <div class="topbar"><h1>HR records</h1><span class="pill off">CONFIDENTIAL</span><span class="spacer"></span><span id="who" class="muted"></span><button class="secondary" id="btnLogout">Logout</button></div>
+  <div class="page">
+    <div class="panel">
+      <div class="panel-head"><h2>Employees</h2><span id="count" class="muted"></span></div>
+      <p class="muted">National IDs are masked on screen (Policy 4). Every view and delete is logged (Policy 2).</p>
+      <div class="msg" id="msg"></div>
+      <table>
+        <thead><tr><th>ID</th><th>Name</th><th>National ID</th><th>Department</th><th class="num">Salary (EGP)</th><th>Phone</th><th>Email</th><th></th></tr></thead>
+        <tbody id="rows"></tbody>
+      </table>
+    </div>
+  </div>
+  <script src="js/common.js"></script>
+  <script src="js/records.js"></script>
+</body>
+</html>

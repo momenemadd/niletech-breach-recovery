@@ -1,0 +1,18 @@
+{
+  "log": "logs/auth.log",
+  "generated": "2026-11-15T19:35:46Z",
+  "thresholds": {
+    "logfile": "logs/auth.log",
+    "threshold": 5,
+    "window": 300,
+    "success_window": 600,
+    "spray_users": 3,
+    "follow": true,
+    "truth": null,
+    "sweep": false,
+    "report": "reports/detection_report.json"
+  },
+  "events": 0,
+  "alerts": [],
+  "incidents": []
+}

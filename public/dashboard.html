@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NileTech - Security Operations Dashboard</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="/vendor/chart.umd.min.js"></script>
+</head>
+<body>
+  <div class="topbar">
+    <h1>Security Operations</h1>
+    <span id="modePill" class="pill on">PROTECTION ON</span>
+    <span id="maintPill" class="pill maint hidden">MAINTENANCE - RESTORING</span>
+    <span class="spacer"></span>
+    <span id="thresholds" class="muted"></span>
+    <button class="secondary" id="btnMode">Turn protection OFF</button>
+    <span id="who" class="muted"></span>
+    <button class="secondary" id="btnLogout">Logout</button>
+  </div>
+
+  <div class="page">
+    <div class="kpis">
+      <div class="kpi" id="kFailed"><div class="label">Failed logins (last 5 min)</div><div class="value">0</div></div>
+      <div class="kpi" id="kBlocked"><div class="label">Blocked IPs</div><div class="value">0</div></div>
+      <div class="kpi" id="kAlerts"><div class="label">Open alerts</div><div class="value">0</div></div>
+      <div class="kpi" id="kRecords"><div class="label">Employee records</div><div class="value">0</div></div>
+    </div>
+
+    <div class="grid2">
+      <div class="panel">
+        <div class="panel-head"><h2>Alerts</h2><button class="small secondary" id="btnAckAll">Acknowledge all</button></div>
+        <div class="scroll" id="alerts"></div>
+      </div>
+
+      <div class="panel">
+        <div class="panel-head"><h2>Incident recovery</h2><button class="small secondary" id="btnBackup">Backup now</button></div>
+        <div class="plan" id="plan"></div>
+        <button class="danger" id="btnRestore">Restore known-good backup</button>
+        <ul class="steps" id="steps"></ul>
+        <div class="result" id="restoreResult"></div>
+      </div>
+    </div>
+
+    <div class="grid2">
+      <div class="panel">
+        <h2>Login activity (per minute, last 30 min)</h2>
+        <div class="chart-box"><canvas id="chart"></canvas></div>
+      </div>
+      <div class="panel">
+        <h2>Backups</h2>
+        <div class="scroll">
+          <table><thead><tr><th>Taken</th><th>Reason</th><th class="num">Records</th><th>Local</th><th>Offsite</th></tr></thead><tbody id="backups"></tbody></table>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid2">
+      <div class="panel">
+        <h2>Blocked IPs</h2>
+        <table><thead><tr><th>IP</th><th>Reason</th><th>Unblocks at</th><th></th></tr></thead><tbody id="blocked"></tbody></table>
+      </div>
+      <div class="panel">
+        <h2>Locked accounts</h2>
+        <p class="muted">Unlock = forced password reset (Policy 1). The new password must pass the password policy.</p>
+        <table><thead><tr><th>User</th><th>Reason</th><th>New password</th></tr></thead><tbody id="locked"></tbody></table>
+      </div>
+    </div>
+
+    <div class="panel">
+      <h2>Login attempts (latest 300)</h2>
+      <div class="scroll">
+        <table><thead><tr><th>Time</th><th>IP</th><th>Username</th><th>Status</th></tr></thead><tbody id="attempts"></tbody></table>
+      </div>
+    </div>
+  </div>
+  <div id="toast" class="toast hidden"></div>
+
+  <script src="js/common.js"></script>
+  <script src="js/dashboard.js"></script>
+</body>
+</html>
