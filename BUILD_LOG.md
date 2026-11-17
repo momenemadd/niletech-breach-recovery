@@ -16,8 +16,8 @@ Add a dated line each time someone works on the project. Keep it short and factu
 | Test | Expected | Result / date |
 | --- | --- | --- |
 | Normal traffic only | 0 R1/R3 alerts | |
-| Attack, protection OFF | R1 -> R3 -> R4, records 20 -> 12 | |
-| Restore known-good | 20 records, checksum match, time < 15 min | |
+| Attack, protection OFF | R1 -> R3 -> R4, records 20 -> 12 | Passed 2026-11-15 (password found on try 8, 20 -> 12) |
+| Restore known-good | 20 records, checksum match, time < 15 min | Passed 2026-11-15 (12 -> 20, checksum match, about 12 ms) |
 | Tampered local backup | falls back to offsite copy | |
-| Attack, protection ON | IP blocked, R3 locks account, no data touched | |
-| Synthetic dataset | precision 1.0, recall 0.667 (slow attacker missed) | |
+| Attack, protection ON | IP blocked, R3 locks account, no data touched | Passed 2026-11-15 (blocked 10/20/40 s, then account locked) |
+| Synthetic dataset | precision 1.0, recall 0.667 (slow attacker missed) | Passed 2026-11-15 |

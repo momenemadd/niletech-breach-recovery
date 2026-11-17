@@ -3,3 +3,6 @@ node_modules/
 data/
 logs/
 backups/
+reports/detection_report.json
+CLAUDE.md
+~$*

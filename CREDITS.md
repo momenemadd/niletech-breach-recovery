@@ -24,4 +24,4 @@ https://github.com/singh-70-9-shreyansh/waf-bruteforce-detection, released under
 What we kept: the overall idea (Express + Socket.IO live dashboard, per-IP failure counting with doubling
 block duration). Everything else was rewritten or added by Group 32 - see "Changes from the original" in README.md.
 
-Libraries: Express, express-session, Socket.IO, better-sqlite3, bcryptjs, dotenv, Chart.js (all MIT).
+Libraries: Node's built-in SQLite (node:sqlite), Express, express-session, Socket.IO, bcryptjs, dotenv, Chart.js (all MIT).

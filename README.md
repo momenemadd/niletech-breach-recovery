@@ -23,6 +23,9 @@ npm start              # http://localhost:3001
 
 All data is synthetic.
 
+> If PowerShell says "running scripts is disabled", run this once, then answer `Y`:
+> `Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser` (or use `npm.cmd`).
+
 ## Project structure
 ```
 server.js                 Express app: login, roles, records API, SOC API, backup/restore API, live updates
@@ -45,7 +48,7 @@ reports/log_profile.md    profile of the synthetic dataset
 ```
 
 ## Live demo script (about 8 minutes)
-Open 3 terminals and a browser logged in as `secadmin`.
+Open 3 terminals in VS Code (name them **server**, **python**, **attack**) and a browser at http://localhost:3001 logged in as `secadmin`.
 
 **Scene 1: the vulnerable system is breached** (requirement: show the alert firing)
 1. `npm run reset-demo`, then `npm start` (terminal A).
@@ -102,3 +105,13 @@ Threshold 5 is the lowest with **0 false positives**. The low-and-slow attacker 
 ## Configuration
 Every policy value lives in `config.js`, and any of them can be overridden in `.env`. The demo uses `BLOCK_BASE_MS=10000` (10 s) so the presentation doesn't wait minutes. The policy value is 60 s.
 `SIMULATION_TRUST_XFF=true` lets the scripts pretend to be different IPs. It must be `false` on any real deployment.
+
+## If something goes wrong
+| Problem | Fix |
+| --- | --- |
+| Website does not open | The **server** terminal must show "NileTech app on http://localhost:3001". If not, run `npm start` |
+| "Invalid username or password" for secadmin | Stop the server (Ctrl+C), `npm run reset-demo`, `npm start` |
+| `EADDRINUSE` | Another server is still running in another terminal: Ctrl+C there |
+| Python shows nothing new | Ctrl+C in **python** and start it again |
+| Attack says "blocked" / "locked" | Protection is ON: click **Turn protection OFF** (or reset) |
+| Need to repeat the demo | Ctrl+C **server** and **python**, then `npm run reset-demo` and start again |
